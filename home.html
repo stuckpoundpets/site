@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="navbar">
+    <a href="pets.html">SORT BY PET</a>
+    <a href="names.html">SORT BY NAME</a>
+    <a href="form.html">ADD / REMOVE A PET</a>
+  </div>
+  
+  <div>
+    <h1>STUCK PETS</h1>
+    <img src='https://images.neopets.com/template_images/quiggle_baby_bubblepop.gif'>
+  </div>
+  
+  <div>
+  <h2>------------------------------</h2>
+  <h2>RECENTLY ADDED</h2>
+  <h2>------------------------------</h2>
+  </div>
+    <div id="content"><p>loading images...</p></div>
+
+<script>
+    // Load the Google Sheets API client library
+    gapi.load('client', init);
+
+    function init() {
+      gapi.client.init({
+        apiKey: 'AIzaSyBAVs4r_W1s37Zjkc1OE2QAauJtJ5Ti43g', // Your API key here
+        discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
+      }).then(() => {
+        fetchData();
+      }).catch(error => console.error('Error loading Google Sheets API:', error));
+    }
+
+    function fetchData() {
+      gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: '1q3xOwVLacCgr55rMzYrWk_zIq7ffRT9kJxJHU9znaG8', // Your spreadsheet ID here
+        range: 'main!A:G', // Assuming your data is in columns A to G
+      }).then(response => {
+        const data = response.result.values;
+        displayData(data);
+      }).catch(error => console.error('Error fetching data from Google Sheets:', error));
+    }
+
+    function displayData(data) {
+      var content = document.getElementById('content');
+      var html = '';
+
+      try {
+        if (Array.isArray(data) && data.length > 0) {
+          // Loop through the data and group rows in sets of five
+          for (var i = 1; i < data.length; i += 5) { // Start from 1 to skip header row
+            html += '<div class="row-container">'; // Container for each set of five rows
+            for (var j = i; j < Math.min(i + 5, data.length); j++) {
+              var row = data[j];
+              // Construct HTML content for each row
+              html += '<div class="row">';
+              html += '<a href="' + row[4] + '">';
+              html += '<img src="' + row[6] + '" alt="Image" width="200" height="200">';
+              html += '</a>';
+              html += '<p>' + row[0] + '</p>';
+              html += '<p>' + row[1] + '</p>';
+              html += '<p>' + row[2] + '</p>';
+              html += '<p>' + row[3] + '</p>';
+              html += '</div>';
+            }
+            html += '</div>'; // Close row-container
+          }
+        } else {
+          html = '<p>Error: Data is empty or not in the expected format.</p>';
+        }
+      } catch (error) {
+        console.error('Error processing data:', error);
+        html = '<p>Error: Unable to process data.</p>';
+      }
+
+      // Update the content of the element with the constructed HTML
+      content.innerHTML = html;
+    }
+</script>
+
+<script src="https://apis.google.com/js/api.js"></script>
