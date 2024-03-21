@@ -22,10 +22,13 @@
   <h2>RECENTLY ADDED</h2>
   <h2>------------------------------</h2>
   </div>
-    <div id="content"><p>loading images...</p></div>
+
+<div id="content"><p>loading images...</p></div>
+
+<script src="https://apis.google.com/js/api.js"></script>
 
 <script>
-    // Load the Google Sheets API client library
+
     gapi.load('client', init);
 
 function init() {
@@ -87,7 +90,5 @@ function fetchData() {
       content.innerHTML = html;
     }
 </script>
-
-<script src="https://apis.google.com/js/api.js"></script>
 </body>
 </html>
