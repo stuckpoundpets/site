@@ -1,0 +1,37 @@
+body {
+  font: 11pt tahoma;
+  background-color: #ffffff;
+  text-align: center;
+}
+p, h1, h2, h3 {
+  font: tahoma;
+}
+.navbar {
+  overflow: hidden;
+  background-color: #385c44;
+  margin: 10px;
+}
+.navbar a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+input[type="submit"] {
+  font-family: Tahoma, sans-serif;
+  background-color: rgb(222, 222, 222);
+  color: black;
+  border: 1px solid rgb(117, 117, 117); 
+  padding: 4px 20px; 
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+input[type="submit"]:hover {
+  background-color: black;
+  color: white;
+}
