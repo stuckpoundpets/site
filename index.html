@@ -28,24 +28,28 @@
     // Load the Google Sheets API client library
     gapi.load('client', init);
 
-    function init() {
-      gapi.client.init({
-        apiKey: 'AIzaSyBAVs4r_W1s37Zjkc1OE2QAauJtJ5Ti43g', // Your API key here
-        discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
-      }).then(() => {
-        fetchData();
-      }).catch(error => console.error('Error loading Google Sheets API:', error));
-    }
+function init() {
+  console.log('Initializing Google Sheets API...');
+  gapi.client.init({
+    apiKey: 'AIzaSyBAVs4r_W1s37Zjkc1OE2QAauJtJ5Ti43g',
+    discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
+  }).then(() => {
+    console.log('Google Sheets API initialized successfully.');
+    fetchData();
+  }).catch(error => console.error('Error loading Google Sheets API:', error));
+}
 
-    function fetchData() {
-      gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: '1q3xOwVLacCgr55rMzYrWk_zIq7ffRT9kJxJHU9znaG8', // Your spreadsheet ID here
-        range: 'main!A:G', // Assuming your data is in columns A to G
-      }).then(response => {
-        const data = response.result.values;
-        displayData(data);
-      }).catch(error => console.error('Error fetching data from Google Sheets:', error));
-    }
+function fetchData() {
+  console.log('Fetching data from Google Sheets...');
+  gapi.client.sheets.spreadsheets.values.get({
+    spreadsheetId: '1q3xOwVLacCgr55rMzYrWk_zIq7ffRT9kJxJHU9znaG8',
+    range: 'main!A:G',
+  }).then(response => {
+    console.log('Data fetched successfully:', response);
+    const data = response.result.values;
+    displayData(data);
+  }).catch(error => console.error('Error fetching data from Google Sheets:', error));
+}
 
     function displayData(data) {
       var content = document.getElementById('content');
