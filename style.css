@@ -29,7 +29,7 @@ p, h1, h2, h3 {
 }
 .row {
     flex: 0 0 18%;
-    margin-bottom: 20px;
+    margin: 20px;
     text-align: center;
 }
 input[type="submit"] {
