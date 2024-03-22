@@ -46,7 +46,7 @@ function fetchData() {
   console.log('Fetching data from Google Sheets...');
   gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: '1q3xOwVLacCgr55rMzYrWk_zIq7ffRT9kJxJHU9znaG8',
-    range: 'main!A:G',
+    range: 'main!A2:G',
   }).then(response => {
     console.log('Data fetched successfully:', response);
     const data = response.result.values;
