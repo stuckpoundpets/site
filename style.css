@@ -25,16 +25,15 @@ p, h1, h2, h3 {
 .content-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start; /* Adjust as needed */
+    justify-content: space-between;
 }
 .row {
-    flex: 0 0 calc(20% - 20px); /* Adjust as needed */
-    margin: 10px; /* Adjust as needed */
+    flex: 0 0 calc(20% - 20px);
+    margin-bottom: 20px;
     text-align: center;
 }
-
 .row img {
-    width: 100%; /* Ensure images fill their container */
+    width: 100%;
     height: auto;
 }
 input[type="submit"] {
