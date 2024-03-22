@@ -37,7 +37,7 @@ p, h1, h2, h3 {
     height: auto;
 }
 .google-sheet-image {
-    border: 2px solid black;
+    border: 1px solid black;
 }
 input[type="submit"] {
   font-family: Tahoma, sans-serif;
