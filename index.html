@@ -54,41 +54,37 @@ function fetchData() {
   }).catch(error => console.error('Error fetching data from Google Sheets:', error));
 }
 
-    function displayData(data) {
-      var content = document.getElementById('content');
-      var html = '';
+function displayData(data) {
+    var content = document.getElementById('content');
+    var html = '';
 
-      try {
+    try {
         if (Array.isArray(data) && data.length > 0) {
-          // Loop through the data and group rows in sets of five
-          for (var i = 1; i < data.length; i += 5) { // Start from 1 to skip header row
-            html += '<div class="row-container">'; // Container for each set of five rows
-            for (var j = i; j < Math.min(i + 5, data.length); j++) {
-              var row = data[j];
-              // Construct HTML content for each row
-              html += '<div class="row">';
-              html += '<a href="' + row[4] + '">';
-              html += '<img src="' + row[6] + '" alt="Image" width="200" height="200">';
-              html += '</a>';
-              html += '<p>' + row[0] + '</p>';
-              html += '<p>' + row[1] + '</p>';
-              html += '<p>' + row[2] + '</p>';
-              html += '<p>' + row[3] + '</p>';
-              html += '</div>';
+            for (var j = 0; j < data.length; j++) {
+                var row = data[j];
+                // Construct HTML content for each row
+                html += '<div class="row">';
+                html += '<a href="' + row[4] + '">';
+                html += '<img src="' + row[6] + '" alt="Image" width="200" height="200">';
+                html += '</a>';
+                html += '<p>' + row[0] + '</p>';
+                html += '<p>' + row[1] + '</p>';
+                html += '<p>' + row[2] + '</p>';
+                html += '<p>' + row[3] + '</p>';
+                html += '</div>';
             }
-            html += '</div>'; // Close row-container
-          }
         } else {
-          html = '<p>Error: Data is empty or not in the expected format.</p>';
+            html = '<p>Error: Data is empty or not in the expected format.</p>';
         }
-      } catch (error) {
+    } catch (error) {
         console.error('Error processing data:', error);
         html = '<p>Error: Unable to process data.</p>';
-      }
-
-      // Update the content of the element with the constructed HTML
-      content.innerHTML = html;
     }
+
+    // Update the content of the element with the constructed HTML
+    content.innerHTML = html;
+}
+
 </script>
 </body>
 </html>
