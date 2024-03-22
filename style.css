@@ -25,11 +25,17 @@ p, h1, h2, h3 {
 .content-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start; /* Adjust as needed */
 }
 .row {
-    width: 20%;
+    flex: 0 0 calc(20% - 20px); /* Adjust as needed */
+    margin: 10px; /* Adjust as needed */
     text-align: center;
+}
+
+.row img {
+    width: 100%; /* Ensure images fill their container */
+    height: auto;
 }
 input[type="submit"] {
   font-family: Tahoma, sans-serif;
