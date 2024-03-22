@@ -65,7 +65,7 @@ function displayData(data) {
                 // Construct HTML content for each row
                 html += '<div class="row">';
                 html += '<a href="' + row[4] + '">';
-                html += '<img src="' + row[6] + '" alt="Image" width="200" height="200">';
+                html += '<img src="' + row[6] + '" alt="Image">';
                 html += '</a>';
                 html += '<p>' + row[0] + '</p>';
                 html += '<p>' + row[1] + '</p>';
@@ -84,6 +84,7 @@ function displayData(data) {
     // Update the content of the element with the constructed HTML
     content.innerHTML = html;
 }
+
 
 </script>
 </body>
