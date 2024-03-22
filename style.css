@@ -22,12 +22,15 @@ p, h1, h2, h3 {
   background-color: #ddd;
   color: black;
 }
-.row-container {
-display: flex;
-flex-wrap: wrap;
+.content-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 .row {
-  width: 20%;
+    flex: 0 0 18%;
+    margin-bottom: 20px;
+    text-align: center;
 }
 input[type="submit"] {
   font-family: Tahoma, sans-serif;
